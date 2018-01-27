@@ -22,9 +22,11 @@ namespace TaskOne
 
 			for (int index = 0; index < input.Length; index++)
 			{
+				if (IsDelimeter(input[index])) continue;
+
 				if (Char.IsDigit(input[index]))
 				{
-					while (!IsOperator(input[index]))
+					while (!IsDelimeter(input[index]) && !IsOperator(input[index]))
 					{
 						output += input[index];
 
@@ -93,7 +95,7 @@ namespace TaskOne
 				{
 					var str = String.Empty;
 
-					while (!IsOperator(input[index]))
+					while (!IsDelimeter(input[index]) && !IsOperator(input[index]))
 					{
 						str += input[index];
 
@@ -130,6 +132,12 @@ namespace TaskOne
 			return stack.Peek();
 		}
 
+		static private bool IsDelimeter(char c)
+		{
+			if ((" ".IndexOf(c) != -1)) return true;
+			return false;
+		}
+
 		private static bool IsOperator(char с)
 		{
 			if (("~#()".IndexOf(с) != -1)) return true;
@@ -137,14 +145,14 @@ namespace TaskOne
 			return false;
 		}
 
-		private static byte GetPriority(char s)
+		private static byte GetPriority(char c)
 		{
-			switch (s)
+			switch (c)
 			{
 				case '(': return 0;
 				case ')': return 1;
-				case '#': return 2;
-				case '~': return 3;
+				case '~': return 2;
+				case '#': return 3;
 				default: return 4;
 			}
 		}
