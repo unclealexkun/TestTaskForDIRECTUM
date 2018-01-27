@@ -11,14 +11,16 @@ namespace TaskOne
 	{
 		static void Main(string[] args)
 		{
+			var input = String.Empty;
+
 			using (var reader = new StreamReader("input.txt"))
 			{
-				
+				input = reader.ReadToEnd();
 			}
 
 			using (var writer = new StreamWriter("output.txt"))
 			{
-
+				writer.Write(ReversePolishNotation.Calculate(input));
 			}
 		}
 	}
