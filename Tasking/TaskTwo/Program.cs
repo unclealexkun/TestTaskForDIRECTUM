@@ -45,11 +45,28 @@ namespace TaskTwo
 				}
 			}
 
-			var temp = SortArray.Sort(array);
+			var result = SortArray.Sort(array);
 
 			using (var writer = new StreamWriter("output.txt"))
 			{
+				for (row = 0; row < result.GetLength(0); row++)
+				{
+					var str = String.Empty;
 
+					for (column = 0; column < result.GetLength(1); column++)
+					{
+						if (column > result.GetLength(1) - 2)
+						{
+							str += result[row, column].ToString();
+						}
+						else
+						{
+							str += result[row, column].ToString() + " ";
+						}
+					}
+
+					writer.WriteLine(str);
+				}
 			}
 		}
 	}
