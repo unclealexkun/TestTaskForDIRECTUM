@@ -20,7 +20,7 @@ namespace TaskOne
 
 			using (var writer = new StreamWriter("output.txt"))
 			{
-				writer.Write(ReversePolishNotation.Calculate(input));
+				writer.Write(ReversePolishNotation.Calculate(input+"="));
 			}
 		}
 	}
