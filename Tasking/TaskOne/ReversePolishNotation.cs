@@ -108,8 +108,8 @@ namespace TaskOne
 
 				if (IsOperator(input[index]))
 				{
-					var a = stack.Pop();
 					var b = stack.Pop();
+					var a = stack.Pop();
 
 					switch (input[index])
 					{
